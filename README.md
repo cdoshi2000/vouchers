@@ -1,7 +1,7 @@
 # vouchers
 Managing vouchers
 
-## Installattions
+## Installation
 Git checkout
 composer install
 create a database with the name voucher
