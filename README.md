@@ -10,20 +10,22 @@ Managing vouchers
 
 
 ## End points and usage
-Example
 ### Generate vouchers
 
+Example
 ```
 /generate?offerName=megaOffer&expiryDate=2018-05-15
 ```
 
 ### Check valid vouchers
+
 Example
 ```
 /valid?email=janedoe@example.com
 ```
 
 ### Redeem vouchers 
+
 Example
 ````
 /redeem?email=johndoe@example.com&code=Vrv9XDNp
