@@ -84,7 +84,7 @@ class VoucherController extends Controller
      * @access public
      * @return json
      */
-    function redeemVoucher(Request $request) {
+    public function redeemVoucher(Request $request) {
         $returnData = array('status' => 'Voucher not valid');
         // validate the input
         $this->validate($request, [
@@ -117,6 +117,42 @@ class VoucherController extends Controller
 
 
         return $returnData;
+
+    }
+
+    /**
+     * validVoucher 
+     * 
+     * @param Request $request 
+     * @access public
+     * @return void
+     */
+    public function validVoucher(Request $request) {
+        $returnData = ['status' => 'No valid codes'];
+
+        // validate the input
+        $this->validate($request, [
+            'email' => 'required|exists:recipients,email',
+        ]);
+
+        // find recipient
+        $recipient = Recipient::where('email', $request['email'])->first();
+        // search the records
+        $vouchers = VoucherCode::select(
+            'voucher_codes.code',
+            'special_offers.name'
+        )->join('special_offers', 'special_offers.id', '=', 'voucher_codes.special_id')
+        ->where('recipient_id', '=', $recipient->id)
+        ->where('expiry_date', '<', 'now()')
+        ->where('used', '!=', 1)
+        ->get()->toArray();
+        ;
+        // if vouchers found return data
+        if($vouchers) {
+            $returnData = $vouchers;
+        }
+        
+        return $returnData; 
 
     }
 
