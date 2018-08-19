@@ -21,4 +21,9 @@ class Recipient extends Model implements AuthenticatableContract, AuthorizableCo
         'name', 'email',
     ];
 
+	public function voucherCode() {
+		return $this->hasMany('App\VoucherCode');
+	}
+
+
 }

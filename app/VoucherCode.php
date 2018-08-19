@@ -18,6 +18,15 @@ class VoucherCode extends Model implements AuthenticatableContract, Authorizable
      * @var array
      */
     protected $fillable = [
-        'code', 'recipient_id', 'special_id', 'user', 'used_at'
+        'code', 'recipient_id', 'special_id', 'expiry_date', 'user', 'used_at'
     ];
+
+	public function recipient() {
+		return $this->belongsTo('App\Recipient');
+	}
+
+	public function specialOffer() {
+		return $this->belongsTo('App\SpecialOffer');
+	}
+
 }

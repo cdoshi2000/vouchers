@@ -18,6 +18,7 @@ class VoucherCodes extends Migration
             $table->string('code');
             $table->unsignedInteger('recipient_id');
             $table->unsignedInteger('special_id');
+            $table->dateTime('expiry_date');
             $table->boolean('used');
             $table->dateTime('used_at');
             $table->timestamps();

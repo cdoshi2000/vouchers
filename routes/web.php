@@ -17,5 +17,5 @@ $router->get('/', function () use ($router) {
 
 $router->get('/createVouchers', 'VoucherController@createVouchers'); 
 $router->get('/generate', 'VoucherController@generate'); 
-$router->get('user/{id}', 'UserController@show');
+$router->get('/redeem', 'VoucherController@redeemVoucher');
 

@@ -20,4 +20,8 @@ class SpecialOffer extends Model implements AuthenticatableContract, Authorizabl
     protected $fillable = [
         'name', 'percentage_discount',
     ];
+
+	public function voucherCode() {
+		return $this->hasMany('App\VoucherCode');
+	}
 }
